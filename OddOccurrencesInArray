@@ -1,0 +1,68 @@
+package Codility;
+
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class OddOccurrencesInArray {
+
+	public static void main(String[] args) 
+	{
+		System.out.print("Enter the Element: ");
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		
+		int arr[] = new int[input];
+		
+		for(int i = 0; i < input; i++)
+		{
+			System.out.print("Enter the digit: ");
+			int digit = sc.nextInt();
+			arr[i] = digit;
+		}
+
+		//System.out.print(arr);
+		
+		oddOccurrences(arr);
+	}
+	
+	private static void oddOccurrences(int arr[])
+	{
+		int count = 1;
+		
+		HashMap<Integer,Integer> arrCount = new HashMap<Integer,Integer>();
+		
+		for(int i = 0; i < arr.length; i++)
+		{
+			for(int j = 0; j < arr.length; j++)
+			{
+				if(i != j)
+				{
+					if(arr[i] == arr[j])
+					{
+						count++;
+					}
+				}
+			}
+			
+			arrCount.put(arr[i],count);
+			count = 1;
+		}
+		
+		int num;
+		
+		for(Map.Entry m:arrCount.entrySet())
+		{
+			 if((int)m.getValue() % 2 != 0)
+			 {
+				 System.out.println("Odd Occurrence In Array is: "+m.getKey());
+				 
+				 num = (int)m.getKey();
+				 
+				 System.out.println("Num: "+num);
+			 }
+		}
+	}
+}
+
