@@ -1,0 +1,32 @@
+public static void main(String[] args)
+	{
+		System.out.println("Enter the Starting Point: ");
+		Scanner sc = new Scanner(System.in);
+		int X = sc.nextInt();
+		
+		System.out.println("Enter the End Point: ");
+		int Y = sc.nextInt();
+		
+		System.out.println("Enter the distance: ");
+		int D = sc.nextInt();
+		
+		
+		
+		int count = solution(X, Y, D);
+		
+		System.out.println("Count: "+count);
+	}
+
+	public static int solution(int X, int Y, int D) 
+	{
+		
+		int distance = Y-X;
+		
+		int count = distance / D;
+		
+		if(distance % D != 0)
+		{
+			count++;
+		}	
+		return count;
+    }
