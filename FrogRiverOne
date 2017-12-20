@@ -1,0 +1,69 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class FrogRiverOne
+{
+
+	public static void main(String[] args) 
+	{
+		System.out.print("Enter the Element in an array: ");
+		Scanner sc = new Scanner(System.in);
+		int number = sc.nextInt();
+		
+		int arr[] = new int[number];
+		
+		for(int i = 0; i < arr.length; i++)
+		{
+			System.out.print("Enter the digit: ");
+			int digit = sc.nextInt();
+			
+			arr[i]= digit;
+		}
+		
+		System.out.print("Enter the final position: ");
+		
+		int X = sc.nextInt();
+		
+		solution(X,arr);
+	}
+
+	public static int solution(int X, int[] A)
+	{
+		ArrayList<Integer> arr= new ArrayList<>();
+		ArrayList<Integer> arr_sec = new ArrayList<>();
+		
+		for(int i = 0; i < A.length; i++)
+		{
+			if(A[i] <= X)//3>2
+			{
+				if(!arr.contains(A[i]))
+				{
+					arr.add(A[i]);
+					arr_sec.add(i);
+				}
+			}
+		}
+		
+		System.out.println("HashSet: "+arr);
+		
+		//System.out.println("ArrayList: "+arr_sec);
+		
+		int position = 0;
+		
+		
+		if(arr.size() == X)
+		{
+			position = arr_sec.get(arr.size()-1);
+		}
+		else
+		{
+			position = -1;
+		}
+		
+		System.out.println("Position: "+position);
+		
+        return position;
+    }
+}
+

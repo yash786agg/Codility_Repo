@@ -1,0 +1,48 @@
+public class PermCheck
+{
+	public static void main(String[] args)
+	{
+		System.out.print("Enter the number of Element is array: ");
+		Scanner sc = new Scanner(System.in);
+		int number = sc.nextInt();
+		
+		int arr[] = new int[number];
+		
+		for(int i = 0; i < arr.length;i++)
+		{
+			System.out.print("Enter the Digit: ");
+			int digit = sc.nextInt();
+			arr[i] = digit;
+		}
+		
+		int flag = solution(arr);
+		
+		System.out.println("flag: "+flag);
+    }
+	
+	private static int solution(int[] A) 
+	{
+		Arrays.sort(A);
+		int count = 0;
+		int flag = 1;
+		
+		for(int i = 0; i < A.length;i++)
+		{
+			count++;
+			
+			System.out.println("count: "+count);
+			
+			if(count == A[i])
+			{
+				flag = 1;
+			}
+			else
+			{
+				flag = 0;
+				break;
+			}
+		}
+		
+        return flag;
+    }
+}
