@@ -1,0 +1,11 @@
+a = a.collect{|elem| elem if(!(elem<=0))}.compact
+a = a.uniq if(!(a.empty?))
+a = a.sort
+
+(1..(a.count+1)).to_a.each_with_index do |elem,index| 
+   if(!(elem == a[index]))
+     return elem
+   end
+end 
+
+end

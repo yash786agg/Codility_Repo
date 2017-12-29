@@ -1,0 +1,61 @@
+public class PassingCars
+{
+	public static void main(String[] args)
+	{
+		System.out.print("Enter the Element: ");
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		
+		int arr[] = new int[input];
+		
+		for(int i = 0 ;i < input; i++)
+		{
+			System.out.print("Enter the digit: ");
+			int digit = sc.nextInt();
+			
+			arr[i] = digit;
+		}
+		
+		solution(arr);
+	}
+
+	public static int solution(int[] A) 
+	{
+	   int count = 0;
+	  
+	   for(int i = 0 ;i < A.length-1; i++)
+	   {
+		  if(A[i] == 0)
+		  {
+			  if(A[i] != A[i+1])
+			  {
+				  count++;
+			  }  
+		  }
+	   }
+	   
+	  /* for(int i = 0 ;i < A.length; i++)
+	   {
+		  if(A[i] == 0)
+		  {
+			  for(int j = i+1 ;j < A.length; j++)
+			  {
+				  if(A[i] != A[j])
+				  {
+					  count++;
+				  }
+			  }
+		  }
+	   }*/
+	   
+	   System.out.println("Count: "+count);
+	   
+	   if(count > 1000000000)
+	   {
+		   count = -1;
+	   }
+	   
+       return count;
+    }
+}
+
