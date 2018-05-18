@@ -1,0 +1,55 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Triangle 
+{
+	public static void main(String[] args) 
+	{
+		System.out.print("Enter the Element: ");
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		
+		int arr[] = new int[input];
+		
+		for(int i = 0; i < input; i++)
+		{
+			System.out.print("Enter the digit: ");
+			int digit = sc.nextInt();
+			arr[i] = digit;
+		}
+
+		solution(arr);
+	}
+	public static int solution(int[] A)
+	{
+		Arrays.sort(A);
+		
+		int i = 0,P,Q,R,flag = 0;
+		
+		while(i < (A.length-2))
+		{
+			P = A[i];
+			Q = A[i+1];
+			R = A[i+2];
+			
+			if((P + Q > R) && (Q + R > P) && (R + P > Q))
+			{
+				flag = 1;
+				break;
+			}
+			i++;
+		}
+	
+		/*if(flag == 1)
+		{
+			System.out.print("Triplet ("+P+","+ Q+","+ R+") is triangular");
+		}
+		else
+		{
+			System.out.print("No Triplet is triangular");
+		}*/
+		
+		return flag;
+	}
+}
+

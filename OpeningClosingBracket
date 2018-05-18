@@ -1,0 +1,59 @@
+package Strings;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class OpeningClosingBracket 
+{
+	public static void main(String[] args)
+	{
+		System.out.print("Enter the Number of Input: ");
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		
+		String[] arr = new String[input];
+		
+		for(int i = 0; i < input; i++)
+		{
+			System.out.print("Enter the Character: ");
+			String digit = sc.next();
+			arr[i] = digit;
+		}
+	
+		Stack<String> stc = new Stack<String>();
+		
+		for(int i = 0;i < arr.length;i++)
+		{  
+			if(stc.isEmpty())
+			{
+				stc.push(arr[i]);
+			}
+			else
+			{
+				if(stc.lastElement().equals("("))
+				{
+					if(arr[i].equals(")"))
+					{
+						stc.pop();
+						continue;
+					}
+					else
+					{
+						stc.push(arr[i]);
+						continue;
+					}
+				}
+			}
+		}  
+		
+		if(stc.isEmpty())
+		{
+			System.out.println("Yes");
+		}
+		else
+		{
+			System.out.println("No");
+		}
+	}
+
+}

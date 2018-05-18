@@ -1,0 +1,36 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Distinct 
+{
+	public static void main(String[] args)
+	{
+		System.out.print("Enter the Element: ");
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		
+		int arr[] = new int[input];
+		
+		for(int i = 0; i < input; i++)
+		{
+			System.out.print("Enter the digit: ");
+			int digit = sc.nextInt();
+			arr[i] = digit;
+		}
+
+		solution(arr);
+	}
+	
+	public static int solution(int[] A)
+	{
+		HashSet<Integer> arr = new HashSet<Integer>();
+		
+		for(int i = 0; i < A.length; i++)
+		{
+			arr.add(A[i]);
+		}
+		
+		return arr.size();
+	}
+}
+
