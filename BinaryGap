@@ -4,80 +4,56 @@ import java.util.Scanner;
 
 public class BinaryGap
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
-		System.out.print("Enter the Element: ");
-		Scanner sc = new Scanner(System.in);
-		int input = sc.nextInt();
-
-		String binaryNumber = binaryNumber(input);
-		
-		System.out.println("Binary Number of "+input+" is: "+binaryNumber);
-		
-		binaryCount(binaryNumber);
-	}
-
-	private static void binaryCount(String binaryNumber)
-	{
-		char arr[] = binaryNumber.toCharArray();
-		
-		int count = 0;
-		boolean flag = false;
-		
-		ArrayList<Integer> arrInt = new ArrayList<Integer>();
-		
-		for(int i = 0; i < arr.length; i++)
-		{
-			if(arr[i] == '1')
-			{
-				
-				flag = true;
-				
-			}
-			
-			if(flag)
-			{
-				if(arr[i] == '1')
-				{
-					arrInt.add(count);
-					count = 0;
-				}
-				else
-				{
-					count++;
-				}
-			}
-			
-			
-		}
-		
-		System.out.println(arrInt);
-
-		Collections.sort(arrInt);
-		
-		Collections.reverse(arrInt);
-	
-		
-		
-		System.out.println("Highest Element is: "+arrInt.get(0));
-	}
-	
-	private static String binaryNumber(int number)
-	{
-		int count = 0, a;
-		String x = "";
-		
-		while(number > 0)
-        {
-            a = number % 2;
-            if(a == 1)
-            {
-                count++;
-            }
-            x = x + "" + a;
-            number = number / 2;
-        }
-		return x;
+		    int a,N = 529;
+	        String x = "";
+	        
+	        while(N > 0)
+	        {
+	            a = N % 2;
+	            x = a + x;
+	            N = N/2;
+	        }
+	        
+	        System.out.println(x);
+	        
+	        char[] strArray = x.toCharArray();
+	        int count = 0;
+	      
+	        ArrayList<Integer> arrInt = new ArrayList<Integer>();
+	        
+	        for(int i = 0; i < strArray.length; i++)
+	        {
+	        	System.out.println("");
+	        	
+	        	System.out.println("strArray[i]: "+strArray[i]);
+	        	
+	        	if(strArray[i] == '1')
+	        	{
+	        		arrInt.add(count);
+        			count = 0;
+	        	}
+	        	else
+	        	{
+	        		count++;
+	        	}
+	        	
+	        	System.out.println("count: "+count);
+	        }
+	        
+	        System.out.println("--------------");
+	        
+	        int maxCount = 0;
+	        for(int j = 0; j < arrInt.size(); j++)
+	        {
+	        	if(arrInt.get(j) >= maxCount)
+	        	{
+	        		maxCount = arrInt.get(j);
+	        	}
+	        }
+	        
+	        System.out.print("MaxCount"+maxCount);
 	}
 }
 
