@@ -1,68 +1,73 @@
 package Codility;
 
+import java.util.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
-public class OddOccurrencesInArray {
-
+public class OddOccurrencesInArray 
+{
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter the Element: ");
-		Scanner sc = new Scanner(System.in);
-		int input = sc.nextInt();
+		int[] A = new int[7];
+		A[0] = 9;
+		A[1] = 3;
+		A[2] = 9;
+		A[3] = 3;
+		A[4] = 9;
+		A[5] = 7;
+		A[6] = 9;
 		
-		int arr[] = new int[input];
+		 int value = 0;
+        HashMap<Integer,ArrayList<Integer>> hasMap = new HashMap<Integer,ArrayList<Integer>>();
 		
-		for(int i = 0; i < input; i++)
+		ArrayList<Integer> itemsList = null;
+		
+		for(int i = 0; i < A.length; i++)
 		{
-			System.out.print("Enter the digit: ");
-			int digit = sc.nextInt();
-			arr[i] = digit;
-		}
-
-		//System.out.print(arr);
-		
-		oddOccurrences(arr);
-	}
-	
-	private static void oddOccurrences(int arr[])
-	{
-		int count = 1;
-		
-		HashMap<Integer,Integer> arrCount = new HashMap<Integer,Integer>();
-		
-		for(int i = 0; i < arr.length; i++)
-		{
-			for(int j = 0; j < arr.length; j++)
-			{
-				if(i != j)
-				{
-					if(arr[i] == arr[j])
-					{
-						count++;
-					}
-				}
-			}
 			
-			arrCount.put(arr[i],count);
-			count = 1;
+			
+		    itemsList = hasMap.get(A[i]);
+		    
+			if(itemsList == null)
+			{
+				
+				
+				itemsList = new ArrayList<Integer>();
+				itemsList.add(i);
+				hasMap.put(A[i], itemsList);
+			}
+			else
+			{
+				
+		        // add if item is not already in list
+		       //if(!itemsList.contains(i))
+		    	   itemsList.add(i);
+		    	   hasMap.put(A[i], itemsList);
+		    }
+			
+			 
+			 
+			//System.out.print(A[i]+",");
 		}
 		
-		int num;
+		 //for(Map.Entry m:hasMap.entrySet())  
+		//{  
+	         //System.out.println(m.getKey()+" "+m.getValue());   
+		//	        
+		//} 
 		
-		for(Map.Entry m:arrCount.entrySet())
+		Set<Integer> m1Key = hasMap.keySet();
+		for(Integer key : m1Key)
 		{
-			 if((int)m.getValue() % 2 != 0)
-			 {
-				 System.out.println("Odd Occurrence In Array is: "+m.getKey());
-				 
-				 num = (int)m.getKey();
-				 
-				 System.out.println("Num: "+num);
-			 }
+			
+			if(((List<?>)hasMap.get(key)).size() % 2 != 0)
+			{
+				//System.out.println(((List<?>)hasMap.get(key)).size());
+				//System.out.println("Value: "+key);
+				value = key;
+			}
+		   
 		}
+		
+		return value;
 	}
 }
 
