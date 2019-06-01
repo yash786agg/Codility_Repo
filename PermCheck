@@ -22,27 +22,26 @@ public class PermCheck
 	
 	private static int solution(int[] A) 
 	{
-		Arrays.sort(A);
-		int count = 0;
-		int flag = 1;
+	        int count = 1,result = 1;
+		boolean isPermutation = true;
 		
-		for(int i = 0; i < A.length;i++)
+		for(int i = 0; i < A.length; i++)
 		{
-			count++;
-			
-			System.out.println("count: "+count);
-			
-			if(count == A[i])
+			if(count != A[i])
 			{
-				flag = 1;
-			}
-			else
-			{
-				flag = 0;
+				isPermutation = false;
 				break;
 			}
+			else
+				count++;
 		}
 		
-        return flag;
+		if(!isPermutation)
+			result = 0;
+		
+	
+	return result;	
+		
+        
     }
 }
